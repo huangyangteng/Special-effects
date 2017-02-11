@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>cbFlyout-响应式jQuery多级隐藏侧边栏菜单插件|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+	<link rel="stylesheet" href="css/global.css">
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div id="left-flyout-nav" class="layout-left-flyout visible-sm"></div>
+	<div class="layout-right-content">
+		<header class="the-header">
+		    <div class="navbar container">
+		      
+		      <!-- Trigger -->
+		      <a class="btn-navbar btn-navbar-navtoggle btn-flyout-trigger" href="#">
+		        <span class="icon-bar btn-flyout-trigger"></span>
+		        <span class="icon-bar btn-flyout-trigger"></span>
+		        <span class="icon-bar btn-flyout-trigger"></span>
+		      </a>
+		      
+		      <!-- Structure -->
+		      <nav class="the-nav nav-collapse clearfix">
+		        <ul class="nav nav-pill pull-left">
+		          <li class="dropdown">
+		            <a href="#">Dogs <b class="caret"></b></a>
+		            <ul class="subnav">
+		              <li><a href="#">Terrier</a></li>
+		              <li><a href="#">Labrador</a></li>
+		              <li><a href="#">Pitbull</a></li>
+		              <li><a href="#">German Shephard</a></li>
+		              <li><a href="#">Chihuahua</a></li>
+		              <li><a href="#">Beagle</a></li>
+		            </ul>
+		          </li>
+		          <li class="dropdown">
+		            <a href="#">Cats  <b class="caret"></b></a>
+		            <ul class="subnav">
+		              <li><a href="#">Persian</a></li>
+		              <li><a href="#">Siamese</a></li>
+		              <li><a href="#">Ragdoll</a></li>
+		              <li><a href="#">Lion</a></li>
+		              <li><a href="#">Tiger</a></li>
+		            </ul>
+		          </li>
+		          <li class="dropdown">
+		            <a href="#">Primates  <b class="caret"></b></a>
+		            <ul class="subnav">
+		              <li><a href="#">Monkey</a></li>
+		              <li><a href="#">Lemur</a></li>
+		              <li><a href="#">Gorilla</a></li>
+		              <li><a href="#">Chimpanzee</a></li>
+		            </ul>
+		          </li>
+		          <li class="dropdown">
+		            <a href="#">Reptiles  <b class="caret"></b></a>
+		            <ul class="subnav">
+		              <li><a href="#">Boa</a></li>
+		              <li><a href="#">Monitor Lizard</a></li>
+		              <li><a href="#">Comodo Dragon</a></li>
+		              <li><a href="#">Iguana</a></li>
+		              <li><a href="#">Alligator</a></li>
+		            </ul>
+		          </li>
+		        </ul>
+		        <ul class="nav nav-pill pull-right">
+		          <li><a href="#">Congress </a></li>
+		          <li><a href="#">Blog </a></li>
+		          <li><a href="#">Contact Us </a></li>
+		        </ul>
+		      </nav>
+		    </div>
+		  </header>
+		  
+		  <main class="container">
+		    <header class="htmleaf-header">
+				<h1>cbFlyout-响应式jQuery多级隐藏侧边栏菜单插件 <span>A Responsive Off Screen Navigation jQuery Plugin</span></h1>
+				<div class="htmleaf-links">
+					<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
+					<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/jQuery/Menu-Navigation/201602233137.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
+				</div>
+			</header>
+		    
+		    <p>Effective Responsive navigation patterns are so hard to find nowdays. There are so many of them. They look promising, but a lot of the time when you get into actually beggining to use one, it bites you in the behind.</p>
+		    
+		    <p>I've gone ahead and made a nice jQuery plugin to give people more options. I could sit here and try to describe with words what it does but this is a demo, and you're already here, so just go ahead and play with it.</p>
+		    
+		    <h3 class="align-center">&rarr; (缩放你的浏览器窗口)RESIZE THE SCREEN! &larr;</h3>
+		    
+		    Markup structure is limited as of now (will-change in the future if demand is high)
+    <pre><code>
+&lt;div class=&quot;layout-left-flyout visible-sm&quot;&gt;&lt;/div&gt;<br/>&lt;div class=&quot;layout-right-content&quot;&gt;<br/>  &lt;header class=&quot;the-header&quot;&gt;<br/>    &lt;div class=&quot;navbar container&quot;&gt;<br/><br/>      &lt;!-- Trigger --&gt;<br/>      &lt;a class=&quot;btn-navbar btn-navbar-navtoggle btn-flyout-trigger&quot; href=&quot;#&quot;&gt;<br/>        &lt;span class=&quot;icon-bar btn-flyout-trigger&quot;&gt;&lt;/span&gt;<br/>        &lt;span class=&quot;icon-bar btn-flyout-trigger&quot;&gt;&lt;/span&gt;<br/>        &lt;span class=&quot;icon-bar btn-flyout-trigger&quot;&gt;&lt;/span&gt;<br/>      &lt;/a&gt;<br/><br/>      &lt;!-- Structure --&gt;<br/>      &lt;nav class=&quot;the-nav nav-collapse clearfix&quot;&gt;<br/>        &lt;ul class=&quot;nav nav-pill pull-left&quot;&gt;<br/>          &lt;li class=&quot;dropdown&quot;&gt;<br/>            &lt;a href=&quot;#&quot;&gt;Dogs &lt;b class=&quot;caret&quot;&gt;&lt;/b&gt;&lt;/a&gt;<br/>            &lt;ul class=&quot;subnav&quot;&gt;<br/>              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Terrier&lt;/a&gt;&lt;/li&gt;<br/>              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Labrador&lt;/a&gt;&lt;/li&gt;<br/>              ...<br/>            &lt;/ul&gt;<br/>          &lt;/li&gt;<br/>          &lt;li class=&quot;dropdown&quot;&gt;<br/>            &lt;a href=&quot;#&quot;&gt;Cats  &lt;b class=&quot;caret&quot;&gt;&lt;/b&gt;&lt;/a&gt;<br/>            &lt;ul class=&quot;subnav&quot;&gt;<br/>              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Persian&lt;/a&gt;&lt;/li&gt;<br/>              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Siamese&lt;/a&gt;&lt;/li&gt;<br/>              ...<br/>            &lt;/ul&gt;<br/>          &lt;/li&gt;<br/>          &lt;li class=&quot;dropdown&quot;&gt;<br/>            &lt;a href=&quot;#&quot;&gt;Primates  &lt;b class=&quot;caret&quot;&gt;&lt;/b&gt;&lt;/a&gt;<br/>            &lt;ul class=&quot;subnav&quot;&gt;<br/>              &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Monkey&lt;/a&gt;&lt;/li&gt;<br/>              ...<br/>            &lt;/ul&gt;<br/>          &lt;/li&gt;<br/>        &lt;/ul&gt;<br/>        &lt;ul class=&quot;nav nav-pill pull-right&quot;&gt;<br/>          &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Congress &lt;/a&gt;&lt;/li&gt;<br/>          ...<br/>        &lt;/ul&gt;<br/>      &lt;/nav&gt;<br/>    &lt;/div&gt;<br/>  &lt;/header&gt;<br/>  &lt;main class=&quot;container&quot;&gt;<br/>    ...<br/>  &lt;/main&gt;<br/>&lt;/div&gt;&lt;!-- END .layout-left-flyout --&gt;
+  </code></pre>    
+
+    <br />
+And the JavaScript
+<pre><code>$('.the-nav').cbFlyout( minWidth:768 );
+</code></pre>
+		    <p>Added <code> minWidth </code> option to specify a minimum width to allow the nav to be remain active.</p>
+
+		  </main>
+		</div><!-- END .layout-left-flyout -->
+	
+	<script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+	<script src="js/jquery.cbFlyout.js"></script>
+      <script src="js/main.js"></script>
+</body>
+</html>
