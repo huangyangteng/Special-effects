@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="search.css">
+    <title>SEARCH</title>
+    <script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <style>
+
+    </style>
+
+</head>
+
+<body style="background: black;">
+    <div class="navbar">
+        <ul class="nav-list">
+            <li><a>logo</a></li>
+            <li><a>Mac</a></li>
+            <li><a>ipad</a></li>
+            <li><a>iphone</a></li>
+            <li><a>Watch</a></li>
+            <li><a>Music</a></li>
+            <li><a>技术支持</a></li>
+            <li><a class="click-search" id="click">搜索</a></li>
+            <li><a>购物车</a></li>
+        </ul>
+    </div>
+    <div class="search-content">
+        <form action="">
+            <div class="wrapper">
+                <input type="text" autofocus="autofocus" placeholder="搜索app.com">
+                <!-- <input type="text">
+                <button></button>
+                <button></button> -->
+            </div>
+        </form>
+        <aside id="search-suggestion">
+            <section>
+                <ul>
+                    <li><a href="">查找零售店</a></li>
+                    <li><a href="">配件</a></li>
+                    <li><a href="">ipod</a></li>
+                    <li><a href="">ios</a></li>
+                </ul>
+            </section>
+        </aside>
+
+    </div>
+
+
+
+
+    <script>
+        $(document).ready(function() {
+            
+            $("#click").click(function() {
+                setTimeout("$('.navbar').addClass('nav-bar')",80);
+                setTimeout("$('.navbar').fadeOut('23000')",200);
+                setTimeout("$('.search-content').addClass('search-content-show')",300);
+
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
