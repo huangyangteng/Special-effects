@@ -11,9 +11,10 @@ div.search-content
     section
       ul
 
-向上移44px
-字消失
-出现搜索框
+点击搜索图标之后发生的动画
+1 整个导航条向上移动，（使用 transform:tranlate(Y)）
+2搜索框和搜索面板显示出来(用jquery设置css样式，display:block)，覆盖住下面的导航条（z-index=3），显示的过程：搜索框向左移动一段距离，搜索面板采用渐显效果，搜索面板中的每条信息向左移动一段距离（有时间差）
+整个过程使用css3的animation 属性制作
 
 
 
@@ -71,17 +72,29 @@ a:hover {
 
 }
 .wrapper input{
-    width: 100%;
+    width: 80%;
     height: 42px;
     background: black;
     color: white;
     border: 0px;
     outline: none;
     line-height: 30px;
-    font-size: 22px;;
+    font-size: 22px;
+    animation: 0.1s aleft forwards;
 }
-/*为input设置动画*/
-@keyframes blink-caret { 50% { border-color: transparent; } }
+.wrapper a{
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+}
+/*搜索框的动画*/
+@keyframes aleft{
+    0% {transform: translateX(-10px);}
+    25% {transform: translateX(-20px);}
+    50% {transform: translateX(-30px);}
+    75%{transform: translateX(-40px);}
+    100%{transform: translateX(-50px);}
+}
 .search-content-show{
     display: block;
     left: 16.6667%;
@@ -96,8 +109,24 @@ a:hover {
     background: white;
     margin: 0;
     padding-top: 4px;
-}
+    animation: 0.01s aleft forwards;
+ }
 #search-suggestion ul li{
     line-height: 30px;
 
+        
+
 }
+/*每个li分别设置动画时间差*/
+#a{animation: 0.1s 0.1s aleft-li forwards;}
+#b{animation: 0.2s 0.1s aleft-li forwards;}
+#c{animation: 0.3s 0.1s aleft-li forwards;}
+#d{animation: 0.4s 0.1s aleft-li forwards;}
+@keyframes aleft-li{
+    0% {transform: translateX(20px);}
+    25% {transform: translateX(0px);}
+    50% {transform: translateX(-10px);}
+    75%{transform: translateX(-20px);}
+    100%{transform: translateX(-30px);}
+}
+

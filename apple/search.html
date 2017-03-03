@@ -33,18 +33,19 @@
         <form action="">
             <div class="wrapper">
                 <input type="text" autofocus="autofocus" placeholder="搜索app.com">
+                <a href="#">X</a>
                 <!-- <input type="text">
-                <button></button>
+                <a href=""></a>
                 <button></button> -->
             </div>
         </form>
         <aside id="search-suggestion">
             <section>
                 <ul>
-                    <li><a href="">查找零售店</a></li>
-                    <li><a href="">配件</a></li>
-                    <li><a href="">ipod</a></li>
-                    <li><a href="">ios</a></li>
+                    <li id="a"><a href="">查找零售店</a></li>
+                    <li id="b"><a href="">配件</a></li>
+                    <li id="c"><a href="">ipod</a></li>
+                    <li id="d"><a href="">ios</a></li>
                 </ul>
             </section>
         </aside>
@@ -56,13 +57,16 @@
 
     <script>
         $(document).ready(function() {
-            
+            // 点击搜索搜索按钮，上移，nav消失，导航面板出现
             $("#click").click(function() {
-                setTimeout("$('.navbar').addClass('nav-bar')",80);
-                setTimeout("$('.navbar').fadeOut('23000')",200);
-                setTimeout("$('.search-content').addClass('search-content-show')",300);
+                setTimeout("$('.navbar').addClass('nav-bar')",0);
+                setTimeout("$('.navbar a').fadeOut('23000')",600);
+                setTimeout("$('.search-content').addClass('search-content-show')",900);
 
             });
+            $(".wrapper a").click(function () {
+             location.reload()
+            })
         });
     </script>
 
