@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>轮播</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+	    *{
+	    	margin: 0px;
+	    	padding:0px;
+	    }
+
+		#banner{
+			width: 500px;
+			height: 360px;
+			margin:100px auto;
+			border:1px solid red;
+			position: relative;
+		}
+		#pic{
+			width: 500px;
+			height: 360px;
+			overflow: hidden;
+		}
+		#pic ul{
+			width: 1000%;
+			height: 360px;
+		}
+        #pic ul li{
+        	list-style: none;
+        	float: left;
+        }
+        /*进度条*/
+        #tab{
+        	width: 120px;
+        	height: 5.7px;
+        	background:#fff;
+        	background:rgba(255,255,255,.5);
+        	left: 50%;
+        	bottom: 15px;
+        	position: absolute;
+        	margin-left: -35px;
+        	border-radius: 7px;
+        }
+        #tab ul li{
+        	list-style: none;
+        	float: left;
+        	width: 20px;
+        	height: 2px;
+        	margin:2px 2px;
+        	cursor: pointer;
+           background-color: gray;
+        }
+
+        #tab ul li div{
+            /* list-style: none; */
+            float: left;
+            width: 0px;
+            height: 2px;
+            /* background-color: blue; */
+            /* margin:2px 2px;
+            cursor: pointer; */
+        }
+        /*进度条中的小点点*/
+        #tab ul li div.on{
+        	background-color: red;
+        }
+	</style>
+<!-- 
+页面结构
+  div#banner
+    div#pic
+      ul
+        li*4
+          img
+
+    div#tab
+      ul
+        li
+          div.on
+
+ -->
+</head>
+<body>
+    <div id="banner">
+    	<div id="pic">
+    		<ul>
+    		    <li><img src="img/1.jpg"/></li>
+    		    <li><img src="img/2.jpg"/></li>
+    		    <li><img src="img/3.jpg"/></li>
+    		    <li><img src="img/4.jpg"/></li>
+    		    <li><img src="img/5.jpg"/></li>
+    	    </ul>
+    	</div>
+
+    	<div id="tab">
+    		<ul>
+    			<li><div class="on"></div></li>
+    			<li><div></div></li>
+    			<li><div></div></li>
+    			<li><div></div></li>
+    			<li><div></div></li>
+    		</ul>
+    	</div>
+    </div>
+<!-- 引入move.js move.js 是一个运动框架 -->
+    <script type="text/javascript" src="move.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript">
+
+// ------------------------获取对象-------------------------------------
+  // 问题：代码119行，document.getElementById('pic').getElementsByTagName('ul')[0]是什么意思？
+
+
+        // 获取5个li
+    	var tabLi=document.getElementById('tab').getElementsByTagName('li');
+        // 获取第二个div里面的li里面的5个div
+        var tabDiv=document.getElementById('tab').getElementsByTagName('div');
+        // 获取整个ul
+    	var oUL=document.getElementById('pic').getElementsByTagName('ul')[0];
+       
+        // 获取最外层div banner
+    	var oBanner=document.getElementById('banner');
+        // 定义计时器对象timer
+    	var timer;
+        // 获取下面div的5个li
+        var tab_ul_li=$("#tab ul li");
+
+
+//---------------------------函数调用--------------------------------------
+
+
+        // 调用auto()函数
+        auto();
+
+        
+        // index=0,第一个进度条执行动画move1()
+        var index=0;
+        $(document).ready(function(){
+            move1(tabDiv[index] , 'width' , '20' , 0.1 );
+         })
+        // 点击进度条跳到对应的轮播图
+        for (var i = 0; i < tabLi.length; i++) {
+            $(document).ready(function(){
+                tab_ul_li.click(function(){
+                    index=$(this).index();
+                    /*$(this).addClass("on").siblings().removeClass("on");*/
+                    $(this).css("background-color","red").siblings().css("background-color","gray");;
+                    $("#tab div").removeClass("on");
+                    move(oUL,{marginLeft:-500*index},300);
+                    clearInterval(timer);
+                })
+            })
+        }
+
+
+
+
+// ---------------------------------函数定义部分--------------------------------------
+
+  // 问题，move()函数的作用？？
+         // 定义auto()函数，用于轮播和进度条的移动
+        function auto(){
+            timer=setInterval(function(){
+                // 执行完i++后，index为 1，2，3，4，5
+                index++;
+                //index>5时，清空样式
+                if (index>=5) {
+                    for (var i = 0; i < 5; i++) {
+
+                        tabDiv[i].className='';
+                        tabDiv[i].style.width="0";
+                    }
+                }
+                // %= 的作用  index=index%tabDiv.length,index的取值1,2,3,4,0
+                index%=tabDiv.length;
+                // 进度条增加.on样式
+                tabDiv[index].className='on';
+                // 进度条动，width从0到20
+                move1(tabDiv[index] , 'width' , '20' , 0.1 );
+                // li向左移动500px 1000px 1500px 2000px;漏出下一张图片
+                move(oUL,{marginLeft:-500*index},300);
+            },3000);
+        }
+        // 定义move1 函数，用于进度条的移动
+        function move1(obj , attr , target , speed ){
+                       //让谁动  动那个属性  动到什么程度  动的速度
+            var val = parseInt (getStyle( obj , attr ));
+            var timer = setInterval (function(){
+                val += speed;
+                if (val >= target) {
+                    val = target;
+                    clearInterval(timer);
+                }
+                obj.style[attr] = val+'px';
+            },13);
+        // getStyle()函数
+        function getStyle(obj , attr ){
+                return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];
+            };
+        } 
+    </script>
+</body>
+</html>
